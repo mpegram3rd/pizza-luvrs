@@ -3,7 +3,7 @@
 const _ = require('lodash'),
   Pizza = require('../models/pizza'),
   ImageStore = require('../lib/imageStore'),
-  PizzaStore = require('./pizzaStore'),
+  PizzaStore = require('./pizzaStore');
 
 function createPizza (name, toppings, img, username, callback) {
   ImageStore.saveImage(name.replace(/ /g, '-'), img, (err, imgUrl) => {
@@ -53,13 +53,13 @@ function getPizza (pizzaId, callback) {
 
 function prepPizza (pizza) {
   return _.assign(pizza, {
-    toppings: JSON.stringify(pizza.toppings);
+    toppings: JSON.stringify(pizza.toppings)
   });
 }
 
 function debriefPizza (pizza) {
   return _.assign(pizza, {
-      toppings: JSON.parse(pizza.toppings);
+      toppings: JSON.parse(pizza.toppings)
   });
 }
 
